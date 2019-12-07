@@ -6,9 +6,9 @@ import {
   Text,
   View,
   SafeAreaView,
-  FlatList
+  FlatList, SegmentedControlIOS
 } from 'react-native';
-
+import { Image, SearchBar  } from 'react-native-elements';
 import { MonoText } from '../components/StyledText';
 import { Component } from 'react';
 
@@ -73,13 +73,34 @@ function Item({ title, text}) {
 
 
 export default class NotificationScreen extends Component {
+  state = {
+    active: 1,
+  };
+
   render(){
     return(
       <ScrollView style={styles.container}>
           <SafeAreaView style={styles.container}>
             <FlatList
               data={DATA}
-              renderItem={({ item }) => <Item title={item.title} text={item.text}/>}
+              renderItem={({ item }) =>
+                  <View
+                      onChange={(event) => {
+                        this.setState({active: item.id});}}
+                  >
+                  <View
+                      style={this.state.active === item.id ? styles.notificationActive : styles.notification}
+                  >
+                    <View style={{marginTop:30, marginLeft: 30 }}>
+                      <Image
+                          style={{width: 40, height: 40, paddingTop: 30}}
+                          source={{uri: 'https://icon-library.net/images/notification-icon/notification-icon-3.jpg'}}
+                      />
+                    </View>
+                  <Item title={item.title} text={item.text}/>
+                  </View>
+                  </View>
+              }
               keyExtractor={item => item.id}
             />
           </SafeAreaView>
@@ -100,15 +121,31 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
   },
   item: {
-    backgroundColor: '#f9c2ff',
     padding: 20,
     marginVertical: 8,
     marginHorizontal: 16,
+    color: '#fff',
+  },
+  notification: {
+    backgroundColor: '#4169E1',
+    flexDirection: 'row',
+    width: 320,
+    margin: 20,
+    borderRadius: 10,
+  },
+  notificationActive :{
+    backgroundColor: 'grey',
+    flexDirection: 'row',
+    width: 320,
+    margin: 20,
+    borderRadius: 10,
   },
   title: {
     fontSize: 20,
+    color: '#fff'
   },
   text:{
     fontSize: 15,
+    color: '#fff'
   }
 });
