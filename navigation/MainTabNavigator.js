@@ -1,13 +1,13 @@
 import React from 'react';
 import { Platform } from 'react-native';
-import { createStackNavigator, createBottomTabNavigator } from 'react-navigation';
+import { createStackNavigator, createBottomTabNavigator, createAppContainer } from 'react-navigation';
 
 import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
 import NotificationScreen from '../screens/NotificationScreen';
 import ProfileScreen from '../screens/ProfileScreen';
 import ArticlesScreen from '../screens/ArticlesScreen';
-import LoginScreen from '../screens/LoginScreen';
+import SignInScreen from '../screens/SignInScreen';
 
 const config = Platform.select({
   web: { headerMode: 'screen' },
@@ -17,6 +17,7 @@ const config = Platform.select({
 const HomeStack = createStackNavigator(
   {
     Home: HomeScreen,
+    // SignIn: SignInScreen,
   },
   config
 );
@@ -53,6 +54,20 @@ NotificationStack.navigationOptions = {
 };
 
 NotificationStack.path = '';
+
+// const SignInStack = createStackNavigator(
+//     {
+//         SignIn: HomeScreen,
+//     },
+//     config
+// );
+// SignInStack.navigationOptions = {
+//     tabBarLabel: 'Login',
+//     tabBarIcon: ({ focused }) => (
+//         <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-options' : 'md-options'} />
+//     ),
+// };
+// SignInStack.path = '';
 
 const ProfileStack = createStackNavigator(
   {

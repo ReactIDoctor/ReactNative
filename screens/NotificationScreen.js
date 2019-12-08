@@ -71,7 +71,6 @@ function Item({ title, text}) {
   );
 }
 
-
 export default class NotificationScreen extends Component {
   state = {
     active: 1,
@@ -85,8 +84,7 @@ export default class NotificationScreen extends Component {
               data={DATA}
               renderItem={({ item }) =>
                   <View
-                      onChange={(event) => {
-                        this.setState({active: item.id});}}
+                      onPress={() => {this.setState({active: item.id})}}
                   >
                   <View
                       style={this.state.active === item.id ? styles.notificationActive : styles.notification}

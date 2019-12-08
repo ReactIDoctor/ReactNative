@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { ScrollView, StyleSheet, View, Text } from 'react-native';
 import { Image, SearchBar  } from 'react-native-elements';
 
-
 export default class  ArticlesScreen extends Component{
   state = {
     search: '',
