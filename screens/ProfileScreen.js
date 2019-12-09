@@ -3,14 +3,10 @@ import {
   ScrollView,
   StyleSheet ,
   Image,
-  Platform,
   Text,
-  TouchableOpacity,
   View,
-  Button
 } from 'react-native';
 import { Avatar } from 'react-native-elements';
-import { ExpoLinksView } from '@expo/samples';
 
 export default function ProfileScreen() {
   return (

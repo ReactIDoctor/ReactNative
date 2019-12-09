@@ -1,4 +1,4 @@
-import { combineReducers } from "redux";
+// import { combineReducers } from "redux";
 import authReducer from './auth.reducer';
 import articlesReducer from "./articles.reducer";
 import doctorsReducer from "./doctors.reducer";
